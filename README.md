@@ -3,6 +3,8 @@
 
 By [Seth Donoughe](https://www.sethdonoughe.com/), [Jordan Hoffmann](https://jhoffmann.org/), [Taro Nakamura](http://www.nibb.ac.jp/niimilab/), [Christopher H. Rycroft](https://people.seas.harvard.edu/~chr/), and [Cassandra Extavour](https://www.extavourlab.com/)
 
+![gryllus_sim](./ims/gryllus_sim.png)
+
 ### Requirements
 
 The code uses `numpy` and `scipy`. Additionally, we use `scikit-fmm` [GitHub Link](https://github.com/scikit-fmm/scikit-fmm) [PyPI Link](https://pypi.org/project/scikit-fmm/).
