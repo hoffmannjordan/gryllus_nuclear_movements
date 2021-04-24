@@ -1,11 +1,35 @@
+"""Code for Local density determines nuclear movements during syncytial
+blastoderm formation in a cricket
+"""
 import numpy as np
+import skfmm
+
 
 SCALE = 1.0
 out_dir = "/home/jordanhoffmann/sim_run/"
 
 
+def make_nbhs():
+  """List of neighbor directions.
+
+     Args:
+     Out:
+      List of all points in a 3x3 grid, relative to the center.
+  """
+  nbhd = []
+  for i in range(-1, 2):
+      for j in range(-1, 2):
+          for k in range(-1, 2):
+              nbhd.append([i, j, k])
+  nbhd = np.array(nbhd)
+  new_array = [tuple(row) for row in nbhd]
+  uniques = np.array(list(set(new_array)))
+  return np.array(uniques)
+
+
 def center_func(x):
   """Return a center height, fit based on data.
+
      Args:
       x: Position from -100 to 100.
      Out:
@@ -41,6 +65,7 @@ def center_func(x):
 
 def rad_bent(x):
   """Return a radius, fit based on data.
+
      Args:
       x: Position from -100 to 100.
      Out:
@@ -61,6 +86,49 @@ def rad_bent(x):
        2.301407629890382e-40 * x**21 - 4.949852424225521e-42 * x**22 - \
        1.498466183821452e-44 * x**23 + 8.573404157603941e-47 * x**24 + \
        3.482311667439197e-49 * x**25)
+
+
+def closest(vec, x, y, z):
+  """Return a list of distances from x, y, z to points in vec.
+
+     Args:
+      vec: list of x, y, z coordinates
+      x: x coordinate
+      y: y coordinate
+      z: z coordinate
+     Out:
+      L2 distance from each coordinate to vec
+  """
+  coord = np.array([x, y, z])
+  return np.linalg.norm(coord - vec)
+
+
+def setup(dx, dy, dz, number):
+  """Setup the simulation.
+
+     Args:
+      dx: size in x
+      dy: size in y
+      dz: size in z
+      number: how many nuclei to add
+     Out:
+      locations: array of locations
+      phi: initialise a level set with 0s around each nucleus
+  """
+  locations = np.zeros((number, 3))
+  for i in range(number):
+    locations[i][0] = 80. * SCALE + 5 * np.random.rand() - 2.5
+    locations[i][1] = 45. * SCALE + 2.5 * np.random.rand() - 1.25
+    locations[i][2] = 31. * SCALE + 2.5 * np.random.rand() - 1.25
+    loc = [locations[i][0], locations[i][1], locations[i][2]]
+    print('Set nucleus to : ', loc)
+  phi = np.ones((dx, dy, dz))
+  for i in range(number):
+    rx = int(locations[i][0])
+    ry = int(locations[i][1])
+    rz = int(locations[i][2])
+    phi[rx, ry, rz] = -1
+  return locations, phi
 
 
 if __name__ == "__main__":
