@@ -6,12 +6,8 @@ By [Seth Donoughe](https://www.sethdonoughe.com/), [Jordan Hoffmann](https://jho
 
 ![gryllus_sim](./ims/gryllus_sim.png)
 
-### `ilastik` to `MaMuT`
-[Mathematica](https://www.wolfram.com/mathematica/) code to convert [ilastik](https://www.ilastik.org/) tracks to [MaMuT](https://imagej.net/MaMuT) for manual correction is included in `Convert_Ilastik_to_Mamut.nb`. 
-This code has not been tested with the most recent version of either `ilastik` or `MaMuT`, since it is now deprecated. 
-The functionality has been folded in to `ilastik` and `MaMuT` (it was not when we did this work), but we recommend that users use the supported functionaltiy.
-
-### Main Simulation Dependencies
+## Code to Simulate Embryos
+### Simulation Dependencies
 
 The code uses `numpy` (v. 1.18.1) and `scipy` (v. 1.4.1). Additionally, we use `scikit-fmm` (v. 2019.1.30) [GitHub Link](https://github.com/scikit-fmm/scikit-fmm) [PyPI Link](https://pypi.org/project/scikit-fmm/). The instal time is just a few minutes.
 
@@ -23,15 +19,20 @@ When nuclei divide, one daughter takes the index of the original nucleus, and an
 The expected run time for 800 time steps is approximately 8 hours.
 
 ### Potential Code Modifications
-`IN PROGRESS. CHECK BACK SOON`
+<!-- `IN PROGRESS. CHECK BACK SOON`
 
 * How to change the geometry.
 
 * How to change the shell size.
 
-* How to plot the results.
+* How to plot the results. -->
 
 * How to render the shells.
 
 See [here](https://github.com/hoffmannjordan/Insect-Development-Model) for a _Mathematica_ notebook that can be used to generate a [POV-ray](http://www.povray.org/) file.
 
+## Additional Utilities
+### `ilastik` to `MaMuT` 
+[Mathematica](https://www.wolfram.com/mathematica/) code to convert [ilastik](https://www.ilastik.org/) tracks to [MaMuT](https://imagej.net/MaMuT) for manual correction is included in `Convert_Ilastik_to_Mamut.nb`. 
+This code has not been tested with the most recent version of either `ilastik` or `MaMuT`, since it is now deprecated. 
+The functionality has been folded in to `ilastik` and `MaMuT` (it was not when we did this work), but we recommend that users use the supported functionaltiy.
