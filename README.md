@@ -6,7 +6,11 @@ By [Seth Donoughe](https://www.sethdonoughe.com/), [Jordan Hoffmann](https://jho
 
 ![gryllus_sim](./ims/gryllus_sim.png)
 
-### Requirements
+### `ilastik` to `MaMuT`
+[Mathematica](https://www.wolfram.com/mathematica/) code to convert [ilastik](https://www.ilastik.org/) tracks to [MaMuT](https://imagej.net/MaMuT) for manual correction is included in `Convert_Ilastik_to_Mamut.nb`. 
+This code has not been tested with the most recent version of either `ilastik` or `MaMuT`.
+
+### Main Simulation Requirements
 
 The code uses `numpy` and `scipy`. Additionally, we use `scikit-fmm` [GitHub Link](https://github.com/scikit-fmm/scikit-fmm) [PyPI Link](https://pypi.org/project/scikit-fmm/).
 
