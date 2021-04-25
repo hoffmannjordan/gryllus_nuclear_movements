@@ -8,7 +8,8 @@ By [Seth Donoughe](https://www.sethdonoughe.com/), [Jordan Hoffmann](https://jho
 
 ### `ilastik` to `MaMuT`
 [Mathematica](https://www.wolfram.com/mathematica/) code to convert [ilastik](https://www.ilastik.org/) tracks to [MaMuT](https://imagej.net/MaMuT) for manual correction is included in `Convert_Ilastik_to_Mamut.nb`. 
-This code has not been tested with the most recent version of either `ilastik` or `MaMuT`.
+This code has not been tested with the most recent version of either `ilastik` or `MaMuT`, since it is now deprecated. 
+The functionality has been folded in to `ilastik` and `MaMuT` (it was not when we did this work), but we recommend that users use the supported functionaltiy.
 
 ### Main Simulation Dependencies
 
@@ -19,6 +20,7 @@ The code uses `numpy` (v. 1.18.1) and `scipy` (v. 1.4.1). Additionally, we use `
 The code outputs `csv` files that contain positions through time and the time since the last division. 
 The code can also output individual shells or an auxilliary file useful for tracking the fate of individual nuclei. 
 When nuclei divide, one daughter takes the index of the original nucleus, and another is added at the end. 
+The expected run time for 800 time steps is approximately 8 hours.
 
 ### Potential Code Modifications
 `IN PROGRESS. CHECK BACK SOON`
