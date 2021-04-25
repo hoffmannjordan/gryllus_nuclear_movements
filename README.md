@@ -10,9 +10,9 @@ By [Seth Donoughe](https://www.sethdonoughe.com/), [Jordan Hoffmann](https://jho
 [Mathematica](https://www.wolfram.com/mathematica/) code to convert [ilastik](https://www.ilastik.org/) tracks to [MaMuT](https://imagej.net/MaMuT) for manual correction is included in `Convert_Ilastik_to_Mamut.nb`. 
 This code has not been tested with the most recent version of either `ilastik` or `MaMuT`.
 
-### Main Simulation Requirements
+### Main Simulation Dependencies
 
-The code uses `numpy` and `scipy`. Additionally, we use `scikit-fmm` [GitHub Link](https://github.com/scikit-fmm/scikit-fmm) [PyPI Link](https://pypi.org/project/scikit-fmm/).
+The code uses `numpy` (v. 1.18.1) and `scipy` (v. 1.4.1). Additionally, we use `scikit-fmm` (v. 2019.1.30) [GitHub Link](https://github.com/scikit-fmm/scikit-fmm) [PyPI Link](https://pypi.org/project/scikit-fmm/). The instal time is just a few minutes.
 
 ### Code Output
 
