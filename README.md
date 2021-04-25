@@ -31,6 +31,9 @@ The expected run time for 800 time steps is approximately 8 hours.
 
 See [here](https://github.com/hoffmannjordan/Insect-Development-Model) for a _Mathematica_ notebook that can be used to generate a [POV-ray](http://www.povray.org/) file.
 
+## Data
+The `dataset` folder contains 200 tracked timepoints with a total of 12,864 nucleus timepoints. 
+
 ## Additional Utilities
 ### `ilastik` to `MaMuT` 
 [Mathematica](https://www.wolfram.com/mathematica/) code to convert [ilastik](https://www.ilastik.org/) tracks to [MaMuT](https://imagej.net/MaMuT) for manual correction is included in `Convert_Ilastik_to_Mamut.nb`. 
