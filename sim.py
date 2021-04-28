@@ -103,6 +103,23 @@ def closest(vec, x, y, z):
   return np.linalg.norm(coord - vec)
 
 
+def downsample(shell):
+  """Downsample function used for saving data.
+
+     Args:
+      shell: size in x
+     Out:
+      Either shell or a random selection of points in shell
+  """
+  length = len(shell)
+  if length < 2400:
+    return shell
+  else:
+    permuted = np.random.permutation(range(length))[:2399]
+    smaller = np.array([shell[j] for j in permuted])
+    return smaller
+
+
 def setup(dx, dy, dz, number):
   """Setup the simulation.
 
@@ -129,6 +146,88 @@ def setup(dx, dy, dz, number):
     rz = int(locations[i][2])
     phi[rx, ry, rz] = -1
   return locations, phi
+
+
+def refine_shells(locations, shells, cents, nbhs, interior):
+  """Refine the shells created.
+
+     Args:
+      locations: Where the locations are
+      cents: Where the point of emination is
+      nbhs: The nbhs
+      interior: how many nuclei to add
+     Out:
+      shells_new: The refined, new shells
+  """
+  cents = np.array(cents)
+  num = len(locations)
+  shells_new = [[] for i in range(num)]
+  for i in range(num):
+    me = locations[i]
+    Near_1 = me + cents[i]
+    Anti_1 = me - cents[i]
+    for j in range(len(shells[i])):
+      them = shells[i][j]
+      dis_1 = np.linalg.norm(them - Near_1)
+      dis_2 = np.linalg.norm(them - Anti_1)
+      if dis_1 < 1.055 * dis_2:
+        shells_new[i].append(shells[i][j])
+  return shells_new
+
+
+def divide_new(locations, divide_at, thetwo):
+  """Setup the division times.
+
+     Args:
+      locations:
+      divide_at:
+      thetwo:
+     Out:
+      divide_at:
+  """
+  rad_max = 15
+  for i in range(2):
+    me = locations[thetwo[i]]
+    count = 0
+    for j in range(len(locations)):
+      if np.linalg.norm(me - locations[j]) < rad_max:
+        count += 1
+      else:
+        den = (0.1 * rad_max)
+        count += np.exp(-(np.linalg.norm(me - locations[j]) - rad_max) / den)
+    if count <= 3:
+      divide_at[thetwo[i]] = 52 + int(np.random.normal(0, 1.))
+    elif count <= 4:
+      divide_at[thetwo[i]] = 54 + int(np.random.normal(0, 2.1))
+    elif count <= 5:
+      divide_at[thetwo[i]] = 55 + int(np.random.normal(0, 2.1))
+    elif count <= 6:
+      divide_at[thetwo[i]] = 60 + int(np.random.normal(0, 2.1))
+    elif count <= 8:
+      divide_at[thetwo[i]] = 67 + int(np.random.normal(0, 2.1))
+    elif count <= 10:
+      divide_at[thetwo[i]] = 72 + int(np.random.normal(0, 2.2))
+    elif count <= 13:
+      divide_at[thetwo[i]] = 79 + int(np.random.normal(0, 2.5))
+    elif count <= 15:
+      divide_at[thetwo[i]] = 86 + int(np.random.normal(0, 2.5))
+    elif count <= 17:
+      divide_at[thetwo[i]] = 96 + int(np.random.normal(0, 3.))
+    elif count <= 20:
+      divide_at[thetwo[i]] = 104 + int(np.random.normal(0, 3.))
+    elif count <= 23:
+      divide_at[thetwo[i]] = 122 + int(np.random.normal(0, 3.5))
+    elif count <= 25:
+      divide_at[thetwo[i]] = 151 + int(np.random.normal(0, 3.5))
+    elif count <= 30:
+      divide_at[thetwo[i]] = 183 + int(np.random.normal(0, 3.5))
+    elif count <= 35:
+      divide_at[thetwo[i]] = 193 + int(np.random.normal(0, 4.))
+    elif count <= 40:
+      divide_at[thetwo[i]] = 222 + int(np.random.normal(0, 4.))
+    else:
+      divide_at[thetwo[i]] = 347 + int(np.random.normal(0, 5.5))
+  return divide_at
 
 
 if __name__ == "__main__":
