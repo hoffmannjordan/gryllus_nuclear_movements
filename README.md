@@ -34,3 +34,6 @@ The `dataset` folder contains 200 tracked timepoints from a 3D+T lightsheet data
 
 ## Additional utility
 We used [Mathematica](https://www.wolfram.com/mathematica/) code to transfer [ilastik](https://www.ilastik.org/) tracks to [MaMuT](https://imagej.net/MaMuT). For the purposes of reproducibility, we include this utility as `Convert_Ilastik_to_Mamut.nb`. This code has not been tested with the most recent version of either `ilastik` or `MaMuT`. It is now deprecated because its functionality has been added to `ilastik` and `MaMuT` directly.
+
+[![DOI](https://zenodo.org/badge/356619713.svg)](https://zenodo.org/badge/latestdoi/356619713)
+
